@@ -1,0 +1,69 @@
+.menu-bar
+{
+	background: #fff;
+	position: absolute;
+	left: 0px;
+	height: 550px;
+	width: 170px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+
+
+}
+
+#round-table{
+	display: block;
+	width: 169px;
+	height: 169px;
+    float: left;
+    border-right: 1px solid #dfdfdd;
+    border-bottom: 1px solid #dfdfdd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    cursor: move
+
+}
+#m-rotunda{
+
+	position: absolute;
+    font-size: 20px;
+    top: 130px;
+    left: 25px;
+    right: 0;
+}
+#square-table{
+	display: block;	
+	width: 169px;
+	height: 169px;
+    float: left;
+    border-right: 1px solid #dfdfdd;
+    border-bottom: 1px solid #dfdfdd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    cursor: move
+
+}
+#m-patrata{
+	position: absolute;
+    font-size: 20px;
+    top:297px;
+    left: 30px;
+    right: 0;
+}	
+
+#oval-table{
+	display: block;	
+	width: 169px;
+	height: 169px;
+    float: left;
+    border-right: 1px solid #dfdfdd;
+    border-bottom: 1px solid #dfdfdd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    cursor: move
+
+}
+#m-ovala{
+	position: absolute;
+    font-size: 20px;
+    top:297px;
+    left: 30px;
+    right: 0;
+}	
+
