@@ -1,22 +1,44 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
+	session_start();
+
+ $dbhost = "localhost";
+ $dbuser = "root";
+ $dbpass = "";
+ $dbname = "users";
+ $connection=mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 
+
+   $user_check = $_SESSION['login_user'];
+
+   $ses_sql = mysqli_query($connection,"select username from users where username = '$user_check' ");
+
+   $row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
+
+   $login_session = $row['username'];
+
+   if(!isset($_SESSION['login_user'])){
+      header("location:http://localhost/design/login.php");
+      die();
+   }
+?>
+
+
+
+
+<html>
+</head>
     <link rel="stylesheet" type="text/css" href="css/menu.css">
     <link rel="stylesheet" type="text/css" href="css/signup.css">
     <link rel="stylesheet" type="text/css" href="css/plan.css">
     <link rel="stylesheet" type="text/css" href="css/shapes.css">    
     <link rel="stylesheet" type="text/css" href="css/cssManage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
     <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-    <script type="text/javascript">
-        google.load("jquery", "1.6.3");
-        google.load("jqueryui", "1.8.16");
-    </script>
+   
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/themes/base/jquery-ui.css" />
     <script>
         $(document).ready(function () {
@@ -86,14 +108,26 @@
         <span id="hometitle">Proiecteaza-ti evenimentul</span>
 
     </div>
-    <div>
-        <input id="but" type="button" onclick="location.href='../design/login.html'" value="Log in">
+   <div>
+       	<p id="user" style="position:absolute;top:0px;right:100px">Welcome <?php echo $login_session; ?> </p>
+        <button style="background-color: #ffbb99;
+    position: absolute;
+    padding: 10px 20px;
+    font-size: 17px;
+    cursor: pointer;
+    width: 15%;
+    opacity: 12;
+    right: 70px;
+    top: 40px;"
+	action="php/logout.php">
+            Log Out
+        </button>
     </div>
 
     <div class="selection-bar">
 
-        <a href="../design/start.html">Home</a>
-        <a class="active" href="create.html">Creeaza plan nou</a>
+        <a href="../design/startAfterLog.php">Home</a>
+        <a class="active" href="http://localhost/design/createAfterLog.html">Creeaza plan nou</a>
         <a href="salveaza.html">Salveaza</a>
 
     </div>
@@ -110,20 +144,74 @@
 
 
     </div>
-
+	
+	<script type="text/javascript">
+	
+	function formSubm(){
+		console.log("hola");
+	}
+ 
+</script>
 
     <div class="planner-main" id="plan" style="position:absolute;top:143px;left:200px;height:560px">
 
-           <div id="box" style="display:none" >
-        <form action="" id="form" method="post">
-            <h1>Table details</h1>
-            <p><input type="text" placeholder="Table name" /></p>
-            <p><input type="text" placeholder="Person name" /></p>
-            <p><input type="submit" value="Add" /></p>
-        </form>
+           <div id="box" style=" display:none">
+        <form method="post" action="" id="form" onsubmit="return formSubm()">
+            <p><input type="text" name="table" placeholder="Table name" id="table"/></p>
+            <p><input type="text" name="no" placeholder="Number of persons" id="no"/></p>
+			<p><input type="text" name="pers" placeholder="Person Name" id="pers"/></p>
+    <button id="button" type="button"onclick="submitD()"  style="
+ margin-bottom: 28px;
+	width: 120px;
+	height: 32px;
+	background:#f44336;
+	border: none;
+	border-radius: 2px;
+	color:#fff;
+	font-family: sans-serif;
+	font-weight: 500;
+	text-transform: uppercase;
+	transition: 0.2s ease;
+	cursor: pointer;">Submit</button>
+			
+      
+      
+		<button id="add" type="button" onclick="adauga()" style="
+ margin-bottom: 28px;
+	width: 120px;
+	height: 32px;
+	background:#f44336;
+	border: none;
+	border-radius: 2px;
+	color:#fff;
+	font-family: sans-serif;
+	font-weight: 500;
+	text-transform: uppercase;
+	transition: 0.2s ease;
+	cursor: pointer;">Add Person</button>
     </div>
     </div>
-    
+	
+	<script>
+	function adauga(){
+	$('#add').click(function (e) {
+
+    e.preventDefault();
+
+    var table = $("#table").val();
+    var pers = $("#pers").val();
+	
+	
+    $.post("php/pers.php", {
+      table: table,
+      pers: pers
+    })
+  });
+  
+}
+	</script>
+
+
     
     <script>
         function form() {
@@ -132,9 +220,24 @@
         }
     </script>
 
-   
+	<script>
+	function submitD(){
+	$('#button').click(function (e) {
 
+    e.preventDefault();
 
+    var table = $("#table").val();
+    var no = $("#no").val();
+	
+	
+    $.post("php/invit.php", {
+      table: table,
+      no: no
+    })
+  });
+  
+}
+	</script>
+	
 </body>
-
 </html>

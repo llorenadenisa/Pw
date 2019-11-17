@@ -51,7 +51,7 @@ input[type="password"]
 	outline: none;
 	border-bottom: 1px solid #aaa;
 	font-family: sans-serif;
-	font size:20px;
+	font-size:20px;
 	font-weight: 400;
 	transition: 0.2s ease;
 }

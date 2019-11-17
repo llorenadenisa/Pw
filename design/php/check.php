@@ -21,7 +21,7 @@
  		$result=mysql_query($sql);
  		$rowc=mysql_num_rows($result);
  		if ($rows == 1) {
-		echo "Succes";
+		console.log("Succes");
 		} 
 	else 
 	echo "Username or Password is invalid";

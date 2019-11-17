@@ -1,0 +1,14 @@
+﻿.planner-main {
+    position: absolute;
+    top: 2.4em;
+    left: 19em;
+    bottom: 0;
+    right: 0;
+    z-index: 20;
+    -webkit-tap-highlight-color: transparent;
+    webkit-transition: left .4s;
+
+}
+div{
+    display:block;
+}

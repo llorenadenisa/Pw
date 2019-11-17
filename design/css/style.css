@@ -89,3 +89,9 @@ background-color: #ffbb99;
     top: 40px;
 }
 
+#user {
+    position: absolute;
+    top:30px;
+    right:50px;
+}
+

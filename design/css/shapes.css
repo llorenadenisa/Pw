@@ -1,0 +1,27 @@
+﻿#round{
+width: 100px;
+height: 100px;
+background: lightgray;
+border-radius: 50%;
+position:absolute;
+left:35px;
+}
+#square {
+    width: 120px;
+    height: 120px;
+    background-color: lightgray;
+    position: absolute;
+    left: 35px;
+    top:200px;
+}
+
+
+#oval {
+    width: 180px;
+    height: 100px;
+    background: lightgray;
+    border-radius: 100px / 50px;
+    position: absolute;
+    left: 10px;
+    top: 400px;
+}
